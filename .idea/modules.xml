@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../BoradTest.iml" filepath="$PROJECT_DIR$/../BoradTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../androidthreadtest/androidthreadtest.iml" filepath="$PROJECT_DIR$/../androidthreadtest/androidthreadtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../broadcastbestpractice/broadcastbestpractice.iml" filepath="$PROJECT_DIR$/../broadcastbestpractice/broadcastbestpractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../choosepictest/choosepictest.iml" filepath="$PROJECT_DIR$/../choosepictest/choosepictest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../compasstest/compasstest.iml" filepath="$PROJECT_DIR$/../compasstest/compasstest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../contactstest/contactstest.iml" filepath="$PROJECT_DIR$/../contactstest/contactstest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../databaseprovidertest/databaseprovidertest.iml" filepath="$PROJECT_DIR$/../databaseprovidertest/databaseprovidertest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../databasetest/databasetest.iml" filepath="$PROJECT_DIR$/../databasetest/databasetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../filepersistencetest/filepersistencetest.iml" filepath="$PROJECT_DIR$/../filepersistencetest/filepersistencetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lightsensortext/lightsensortext.iml" filepath="$PROJECT_DIR$/../lightsensortext/lightsensortext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../locationtest/locationtest.iml" filepath="$PROJECT_DIR$/../locationtest/locationtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../notificationtest/notificationtest.iml" filepath="$PROJECT_DIR$/../notificationtest/notificationtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../playaudiotest/playaudiotest.iml" filepath="$PROJECT_DIR$/../playaudiotest/playaudiotest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../servicetest/servicetest.iml" filepath="$PROJECT_DIR$/../servicetest/servicetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sharedpreferencestest/sharedpreferencestest.iml" filepath="$PROJECT_DIR$/../sharedpreferencestest/sharedpreferencestest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../smstest/smstest.iml" filepath="$PROJECT_DIR$/../smstest/smstest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../test2/test2.iml" filepath="$PROJECT_DIR$/../test2/test2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather.iml" filepath="$PROJECT_DIR$/weather.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webviewtesst/webviewtesst.iml" filepath="$PROJECT_DIR$/../webviewtesst/webviewtesst.iml" />
+    </modules>
+  </component>
+</project>

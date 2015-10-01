@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="C:\安装包\android-studio\gradle\gradle-2.4" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../androidthreadtest" />
+            <option value="$PROJECT_DIR$/../app" />
+            <option value="$PROJECT_DIR$/../broadcastbestpractice" />
+            <option value="$PROJECT_DIR$/../choosepictest" />
+            <option value="$PROJECT_DIR$/../compasstest" />
+            <option value="$PROJECT_DIR$/../contactstest" />
+            <option value="$PROJECT_DIR$/../databaseprovidertest" />
+            <option value="$PROJECT_DIR$/../databasetest" />
+            <option value="$PROJECT_DIR$/../filepersistencetest" />
+            <option value="$PROJECT_DIR$/../lightsensortext" />
+            <option value="$PROJECT_DIR$/../locationtest" />
+            <option value="$PROJECT_DIR$/../notificationtest" />
+            <option value="$PROJECT_DIR$/../playaudiotest" />
+            <option value="$PROJECT_DIR$/../servicetest" />
+            <option value="$PROJECT_DIR$/../sharedpreferencestest" />
+            <option value="$PROJECT_DIR$/../smstest" />
+            <option value="$PROJECT_DIR$/../test2" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../webviewtesst" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
