@@ -80,8 +80,7 @@ public class ClooseAreaActivity extends Activity {
 
         if (prefs.getBoolean("city_selected", false) && isFromWeatherActivity){
             startActivity(new Intent(this, WeatherActivity.class));
-            //finish();
-            Log.d(TAG,"no coutyCode startActivity");
+            finish();
             return;
         }
 
@@ -110,8 +109,7 @@ public class ClooseAreaActivity extends Activity {
                     Intent intent = new Intent(ClooseAreaActivity.this, WeatherActivity.class);
                     intent.putExtra("county_code",countyCode);
                     startActivity(intent);
-                    //finish();
-                    Log.d(TAG,"county_code startActivity" +countyCode);
+                    finish();
                 }
             }
         });
@@ -123,7 +121,6 @@ public class ClooseAreaActivity extends Activity {
     private void queryCounties() {
         countyList = coolWeatherDB.loadCounties(selectedCity.id);
 
-        Log.d(TAG,"countyList: "+countyList.size());
         if (countyList.size() > 0) {
             data_List.clear();
 
@@ -207,18 +204,14 @@ public class ClooseAreaActivity extends Activity {
         HttpUtil.sendHttpRequest(address, new HttpCallBackListener() {
             @Override
             public void onFinish(String response) {
-                Log.d(TAG, "onFinish(),isRunning...");
                 boolean result = false;
                 if(Constants.PROVINCE.equals(type)){
                     result = Utility.handleProvinceResponse(coolWeatherDB,response);
-                    Log.d(TAG, "处理省状态"+result);
                 }else if(Constants.CITY.equals(type)){
                    result =  Utility.handleCitiesResponse(coolWeatherDB , response,selectedProvince.id);
 
-                    Log.d(TAG, "处理城市数据状态：" + result);
                 }else if (Constants.COUNTY.equals(type)){
                     result = Utility.handleCountiesResponse(coolWeatherDB, response,selectedCity.id);
-                    Log.d(TAG, "处理县状态" +result);
                 }
 
                 if (result){

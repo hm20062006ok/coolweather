@@ -63,13 +63,11 @@ public class WeatherActivity  extends Activity implements View.OnClickListener {
         String countyCode = getIntent().getStringExtra("county_code");
 
         if ( !TextUtils.isEmpty(countyCode)){
-            Log.d(TAG, "countyCode have content");
             publishText.setText("同步中");
             weatherInfoLayout.setVisibility(View.INVISIBLE);
             cityNameText.setVisibility(View.INVISIBLE);
             queryWeather(countyCode);
         }else{
-            Log.d(TAG, "countyCode is empty");
             showWeather();
         }
 
@@ -77,15 +75,12 @@ public class WeatherActivity  extends Activity implements View.OnClickListener {
     }
 
     private void queryWeather(String countyCode) {
-        Log.d(TAG, "queryWeather");
         String address = "http://www.weather.com.cn/data/list3/city" + countyCode +".xml";
         queryFromServer(address, Constants.COUNTY_CODE);
 
     }
 
     private void queryFromServer(final String address, final String type) {
-        Log.d(TAG, "queryFromServer");
-        Log.d(TAG, address);
         HttpUtil.sendHttpRequest(address, new HttpCallBackListener() {
             @Override
             public void onFinish(String response) {
@@ -125,13 +120,11 @@ public class WeatherActivity  extends Activity implements View.OnClickListener {
     }
 
     private void queryWeatherInfo(String weatherCode) {
-        Log.d(TAG, "queryWeatherInfo");
         String address = "http://www.weather.com.cn/data/cityinfo/" +weatherCode+".html";
         queryFromServer(address,"weatherCode");
     }
 
     private void showWeather(){
-        Log.d(TAG, "showWeather");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         cityNameText.setText(prefs.getString("city_name", ""));
         temp1Text.setText(prefs.getString("temp1",""));

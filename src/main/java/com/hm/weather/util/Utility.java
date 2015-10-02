@@ -102,7 +102,6 @@ public class Utility {
 
     public static void handleWeatherResponse(Context context, String response) {
 
-        Log.d(TAG,"handleWeatherResponse");
         try {
             JSONObject jsonObject = new JSONObject(response);
             JSONObject weatherInfo = jsonObject.getJSONObject("weatherinfo");
@@ -123,7 +122,6 @@ public class Utility {
     }
 
     public static void saveWeatherInfo(Context context, String cityName, String weatherCode, String temp1, String temp2, String weatherDesp, String publishTime) {
-        Log.d(TAG, "saveWeatherInfo");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日", Locale.CHINA);
 
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();

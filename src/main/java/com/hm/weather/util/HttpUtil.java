@@ -33,7 +33,6 @@ public class HttpUtil {
                     connection.setReadTimeout(8000);
 
                     InputStream inputStream = connection.getInputStream();
-                    Log.d(TAG, "connection success");
                     StringBuilder response = new StringBuilder();
 
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -41,11 +40,9 @@ public class HttpUtil {
 
                     while((line = reader.readLine()) != null){
                         response.append(line);
-                        Log.d(TAG, "read success");
                     }
 
                     if (listener != null){
-                        Log.d(TAG, "callBack onFinish()");
                         listener.onFinish(response.toString());
                     }
 

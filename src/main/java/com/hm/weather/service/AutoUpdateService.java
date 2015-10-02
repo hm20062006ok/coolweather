@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.hm.weather.receiver.AutoUpdateReceiver;
 import com.hm.weather.util.HttpCallBackListener;
@@ -15,6 +16,8 @@ import com.hm.weather.util.HttpUtil;
 import com.hm.weather.util.Utility;
 
 public class AutoUpdateService extends Service {
+    private static final String TAG ="AutoUpdateService" ;
+
     public AutoUpdateService() {
 
     }
@@ -36,7 +39,7 @@ public class AutoUpdateService extends Service {
         }).start();
 
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int anHour = 8 * 60 * 60 *1000;
+        int anHour = 8*60*60 * 1000 ;
 
         long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
         Intent i = new Intent(this, AutoUpdateReceiver.class);
