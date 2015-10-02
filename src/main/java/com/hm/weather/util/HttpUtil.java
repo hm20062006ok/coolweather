@@ -45,6 +45,7 @@ public class HttpUtil {
                     }
 
                     if (listener != null){
+                        Log.d(TAG, "callBack onFinish()");
                         listener.onFinish(response.toString());
                     }
 

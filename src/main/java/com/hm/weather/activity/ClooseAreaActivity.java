@@ -1,5 +1,6 @@
 package com.hm.weather.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,9 +8,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -29,11 +32,12 @@ import com.hm.weather.util.Utility;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClooseAreaActivity extends AppCompatActivity {
+public class ClooseAreaActivity extends Activity {
 
     public static final int LEVEL_PROVINCE = 0;
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTY = 2;
+    private static final String TAG = "ClooseAreaActivity";
 
     private ListView listview;
     private TextView titleText;
@@ -65,7 +69,7 @@ public class ClooseAreaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 
 
@@ -76,7 +80,8 @@ public class ClooseAreaActivity extends AppCompatActivity {
 
         if (prefs.getBoolean("city_selected", false) && isFromWeatherActivity){
             startActivity(new Intent(this, WeatherActivity.class));
-            finish();
+            //finish();
+            Log.d(TAG,"no coutyCode startActivity");
             return;
         }
 
@@ -105,7 +110,8 @@ public class ClooseAreaActivity extends AppCompatActivity {
                     Intent intent = new Intent(ClooseAreaActivity.this, WeatherActivity.class);
                     intent.putExtra("county_code",countyCode);
                     startActivity(intent);
-                    finish();
+                    //finish();
+                    Log.d(TAG,"county_code startActivity" +countyCode);
                 }
             }
         });
@@ -116,10 +122,13 @@ public class ClooseAreaActivity extends AppCompatActivity {
 
     private void queryCounties() {
         countyList = coolWeatherDB.loadCounties(selectedCity.id);
+
+        Log.d(TAG,"countyList: "+countyList.size());
         if (countyList.size() > 0) {
             data_List.clear();
 
             for (County county : countyList) {
+
                 data_List.add(county.countyName);
             }
             adapter.notifyDataSetChanged();
@@ -127,12 +136,13 @@ public class ClooseAreaActivity extends AppCompatActivity {
             titleText.setText(selectedCity.cityName);
             currentLevel = LEVEL_COUNTY;
         } else {
-            queryFromServer(selectedCounty.countyCode, "county");
+            queryFromServer(selectedCity.cityCode, Constants.COUNTY);
         }
     }
 
     private void queryCities() {
         cityList = coolWeatherDB.loadCities(selectedProvince.id);
+
         if (cityList.size() > 0) {
             data_List.clear();
             for (City city : cityList) {
@@ -141,10 +151,10 @@ public class ClooseAreaActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
 
             listview.setSelection(0);
-            titleText.setText(selectedCity.cityName);
+            titleText.setText(selectedProvince.provinceName);
             currentLevel = LEVEL_CITY;
         } else {
-            queryFromServer(selectedCity.cityCode, "city");
+            queryFromServer(selectedProvince.provinceCode, Constants.CITY);
         }
 
     }
@@ -181,7 +191,7 @@ public class ClooseAreaActivity extends AppCompatActivity {
         //从服务器查询数据
         String address = "";
         //定义请求地址
-        if (!TextUtils.isEmpty(type)) {
+        if (!TextUtils.isEmpty(code)) {
 
 
             //address = "http://www.weather.com.cn/data/list3/city" + code + ".xml";
@@ -197,13 +207,18 @@ public class ClooseAreaActivity extends AppCompatActivity {
         HttpUtil.sendHttpRequest(address, new HttpCallBackListener() {
             @Override
             public void onFinish(String response) {
+                Log.d(TAG, "onFinish(),isRunning...");
                 boolean result = false;
                 if(Constants.PROVINCE.equals(type)){
                     result = Utility.handleProvinceResponse(coolWeatherDB,response);
+                    Log.d(TAG, "处理省状态"+result);
                 }else if(Constants.CITY.equals(type)){
                    result =  Utility.handleCitiesResponse(coolWeatherDB , response,selectedProvince.id);
+
+                    Log.d(TAG, "处理城市数据状态：" + result);
                 }else if (Constants.COUNTY.equals(type)){
                     result = Utility.handleCountiesResponse(coolWeatherDB, response,selectedCity.id);
+                    Log.d(TAG, "处理县状态" +result);
                 }
 
                 if (result){
@@ -264,10 +279,10 @@ public class ClooseAreaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (currentLevel == LEVEL_CITY){
+        if (currentLevel == LEVEL_COUNTY){
             queryCities();
-        }else if (currentLevel == LEVEL_COUNTY){
-            queryCounties();
+        }else if (currentLevel == LEVEL_CITY){
+            queryProvinces();
         }else{
 
             if (isFromWeatherActivity){
